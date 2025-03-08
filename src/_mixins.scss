@@ -1,0 +1,38 @@
+// Import variables to use them in our mixins
+@use 'variables' as vars;
+
+// Responsive mixins
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == "small" {
+    @media (max-width: vars.$breakpoint-small) { @content; }
+  } @else if $breakpoint == "medium" {
+    @media (max-width: vars.$breakpoint-medium) { @content; }
+  } @else if $breakpoint == 'large' {
+    @media (max-width: vars.$breakpoint-large) { @content; }
+  } @else if $breakpoint == "xlarge" {
+    @media (max-width: vars.$breakpoint-xlarge) { @content; }
+  }
+}
+
+// Flexbox mixins
+@mixin flex($direction: row, $justify: flex-start, $align: stretch, $wrap: nowrap) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  flex-wrap: $wrap;
+}
+
+// Typography mixins
+@mixin heading($size: large) {
+  font-weight: bold;
+  line-height: 1.2;
+  
+  @if $size == "small" {
+    font-size: vars.$font-size-large;
+  } @else if $size == "medium" {
+    font-size: vars.$font-size-xlarge;
+  } @else if $size == "large" {
+    font-size: vars.$font-size-xxlarge;
+  }
+}
